@@ -3,23 +3,23 @@ import { siteDetails } from "./siteDetails";
 
 export const faqs: IFAQ[] = [
     {
-        question: `Is ${siteDetails.siteName} secure?`,
-        answer: 'Absolutely. We use bank-level encryption to protect your data and never store your login information. Plus, our biometric authentication adds an extra layer of security.',
+        question: `What is Sunya?`,
+        answer: 'Sunya is an advanced AI agent specialized in smart contract security, designed to detect and mitigate vulnerabilities in blockchain protocols with precision and efficiency.',
     },
     {
-        question: `Can I use ${siteDetails.siteName} on multiple devices?`,
-        answer: 'Absolutely! Your Finwise account syncs seamlessly across all your devices - smartphone, tablet, and computer.',
+        question: `How does Sunya detect vulnerabilities?`,
+        answer: 'Sunya leverages cutting-edge machine learning models trained on extensive datasets of real-world exploits, combined with formal verification techniques, to scan smart contracts for issues like reentrancy, integer overflows, and access control flaws.',
     },
     {
-        question: 'Can I connect all my bank accounts?',
-        answer: `Yes! ${siteDetails.siteName} supports connections with over 10,000 financial institutions worldwide. Simply log in through our secure portal to link your accounts.`
+        question: `Is Sunya accurate for auditing smart contracts?`,
+        answer: 'Yes, Sunya achieves over 95% accuracy in vulnerability detection, backed by continuous learning from verified audits and community-reported incidents, ensuring robust protection for your DeFi and NFT projects.',
     },
     {
-        question: 'Do I need any financial expertise to use the investing features?',
-        answer: 'Not at all! Our expert-curated portfolios and educational resources make investing accessible to everyone, regardless of experience level.',
+        question: `What types of smart contracts does Sunya support?`,
+        answer: `Sunya supports Solidity, Vyper, and Rust-based contracts across major blockchains like Ethereum, Binance Smart Chain, Polygon, and Solana, with seamless integration for EVM-compatible chains.`
     },
     {
-        question: 'What if I need help using the app?',
-        answer: 'Our dedicated support team is available 24/7 via chat or email. Plus, we offer extensive in-app tutorials and a comprehensive knowledge base to help you make the most of Finwise.'
+        question: `How long does a Sunya audit take?`,
+        answer: 'Audits with Sunya are lightning-fast—most scans complete in under 5 minutes, delivering instant reports with remediation recommendations, so you can deploy securely without delays.'
     }
 ];

@@ -1,6 +1,6 @@
 export const ctaDetails = {
-    heading: 'Join Over 1 Million Users To Transform Your Finances',
-    subheading: 'Your journey to financial freedom starts here. Download Finwise today and take the first step towards a brighter financial future!',
+    heading: 'Join Over 10K Projects to Fortify Your Blockchain Future',
+    subheading: 'Your path to unbreakable smart contracts begins now. Integrate Sunya today and audit with AI precision for a secure, decentralized tomorrow!',
     appStoreUrl: '#',
     googlePlayUrl: '#'
 }

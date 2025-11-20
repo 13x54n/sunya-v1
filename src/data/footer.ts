@@ -7,31 +7,31 @@ export const footerDetails: {
     telephone: string;
     socials: ISocials;
 } = {
-    subheading: "Empowering businesses with cutting-edge financial technology solutions.",
+    subheading: "Securing the blockchain with AI-driven smart contract vulnerability detection.",
     quickLinks: [
         {
-            text: "Features",
-            url: "#features"
+            text: "Audit Tools",
+            url: "#audit-tools"
         },
         {
             text: "Pricing",
             url: "#pricing"
         },
         {
-            text: "Testimonials",
-            url: "#testimonials"
+            text: "Case Studies",
+            url: "#case-studies"
         }
     ],
-    email: 'address@yoursite.com',
-    telephone: '+1 (123) 456-7890',
+    email: 'ming.env@gmail.com',
+    telephone: '+1 (416) 725-8527',
     socials: {
         // github: 'https://github.com',
         // x: 'https://twitter.com/x',
-        twitter: 'https://twitter.com/Twitter',
-        facebook: 'https://facebook.com',
+        // twitter: 'https://twitter.com/SunyaAI',
+        // facebook: 'https://facebook.com',
         // youtube: 'https://youtube.com',
-        linkedin: 'https://www.linkedin.com',
+        // linkedin: 'https://www.linkedin.com/company/sunya-ai',
         // threads: 'https://www.threads.net',
-        instagram: 'https://www.instagram.com',
+        // instagram: 'https://www.instagram.com',
     }
 }
