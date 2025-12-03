@@ -21,7 +21,7 @@ export default function DashboardPage() {
                     Welcome back, {user?.displayName?.split(' ')[0] || 'User'}! 👋
                 </h1>
                 <p className="text-gray-600">
-                    Here's what's happening with your smart contracts today.
+                    Here&apos;s what&apos;s happening with your smart contracts today.
                 </p>
             </div>
 
@@ -66,10 +66,10 @@ export default function DashboardPage() {
                             <div className="text-right">
                                 <span
                                     className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${activity.status === 'success'
-                                            ? 'bg-green-100 text-green-700'
-                                            : activity.status === 'warning'
-                                                ? 'bg-yellow-100 text-yellow-800'
-                                                : 'bg-blue-100 text-blue-700'
+                                        ? 'bg-green-100 text-green-700'
+                                        : activity.status === 'warning'
+                                            ? 'bg-yellow-100 text-yellow-800'
+                                            : 'bg-blue-100 text-blue-700'
                                         }`}
                                 >
                                     {activity.status.charAt(0).toUpperCase() + activity.status.slice(1)}

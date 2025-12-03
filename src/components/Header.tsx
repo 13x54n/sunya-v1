@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Transition } from '@headlessui/react';
 import { HiOutlineXMark, HiBars3 } from 'react-icons/hi2';
@@ -65,9 +66,11 @@ const Header: React.FC = () => {
                                     className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary hover:bg-primary-accent transition-colors"
                                 >
                                     {user.photoURL ? (
-                                        <img
+                                        <Image
                                             src={user.photoURL}
                                             alt={user.displayName || 'User'}
+                                            width={32}
+                                            height={32}
                                             className="w-8 h-8 rounded-full"
                                         />
                                     ) : (

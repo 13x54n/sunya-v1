@@ -2,6 +2,7 @@
 
 import { useAuth } from '@/hooks/useAuth';
 import { FaEnvelope, FaUser, FaCalendar } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function ProfilePage() {
     const { user } = useAuth();
@@ -20,9 +21,11 @@ export default function ProfilePage() {
             <div className="bg-white rounded-2xl shadow-sm p-8 border border-gray-200">
                 <div className="flex items-center gap-6 mb-8">
                     {user.photoURL ? (
-                        <img
+                        <Image
                             src={user.photoURL}
                             alt={user.displayName || 'User'}
+                            width={96}
+                            height={96}
                             className="w-24 h-24 rounded-full border-4 border-gray-100"
                         />
                     ) : (

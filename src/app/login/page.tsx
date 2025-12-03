@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
-import { FaGoogle, FaFingerprint } from 'react-icons/fa';
-import { siteDetails } from '@/data/siteDetails';
+import { FaGoogle } from 'react-icons/fa';
 
 export default function LoginPage() {
     const [error, setError] = useState('');
@@ -20,8 +19,12 @@ export default function LoginPage() {
         try {
             await loginWithGoogle();
             router.push('/dashboard');
-        } catch (err: any) {
-            setError(err.message || 'Failed to sign in with Google.');
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('Failed to sign in with Google.');
+            }
         } finally {
             setLoading(false);
         }
