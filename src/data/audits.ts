@@ -1,0 +1,157 @@
+import { IAudit } from "@/types";
+
+export const audits: IAudit[] = [
+    // {
+    //     id: '1',
+    //     title: 'ERC-20 Token Contract Security Audit',
+    //     description: 'Comprehensive security audit of a standard ERC-20 token implementation with custom features including minting, burning, and transfer restrictions.',
+    //     date: '2024-01-15',
+    //     status: 'completed',
+    //     severity: 'high',
+    //     findings: 8,
+    //     reportUrl: '/reports/erc20-token-audit.pdf',
+    //     contractAddress: '0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb',
+    //     auditor: 'Sunya Security Team',
+    //     // imageUrl: '/images/mockup-1.webp'
+    // },
+    // {
+    //     id: '2',
+    //     title: 'DeFi Lending Protocol Audit',
+    //     description: 'Full security assessment of a decentralized lending protocol including smart contract vulnerabilities, economic model analysis, and oracle integration review.',
+    //     date: '2024-02-20',
+    //     status: 'completed',
+    //     severity: 'critical',
+    //     findings: 12,
+    //     reportUrl: '/reports/defi-lending-audit.pdf',
+    //     contractAddress: '0x8ba1f109551bD432803012645Hac136c22C1777',
+    //     auditor: 'Sunya Security Team',
+    //     // imageUrl: '/images/mockup-2.webp'
+    // },
+    // {
+    //     id: '3',
+    //     title: 'NFT Marketplace Smart Contract Review',
+    //     description: 'Security review of an NFT marketplace platform covering minting, trading, royalties, and marketplace fee mechanisms.',
+    //     date: '2024-03-10',
+    //     status: 'completed',
+    //     severity: 'medium',
+    //     findings: 5,
+    //     reportUrl: '/reports/nft-marketplace-audit.pdf',
+    //     contractAddress: '0x1E0049783F008A0085193E00003D00cd54003c71',
+    //     auditor: 'Sunya Security Team',
+    //     // imageUrl: '/images/hero-mockup.webp'
+    // },
+    // {
+    //     id: '4',
+    //     title: 'Staking Contract Security Analysis',
+    //     description: 'Detailed analysis of a staking contract implementation including reward distribution, slashing mechanisms, and withdrawal security.',
+    //     date: '2024-04-05',
+    //     status: 'in-progress',
+    //     severity: 'high',
+    //     findings: 3,
+    //     contractAddress: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+    //     auditor: 'Sunya Security Team',
+    //     // imageUrl: '/images/hero-chart.webp'
+    // },
+    // {
+    //     id: '5',
+    //     title: 'Multi-Sig Wallet Implementation Audit',
+    //     description: 'Security audit of a multi-signature wallet implementation with focus on access control, transaction validation, and key management.',
+    //     date: '2024-05-12',
+    //     status: 'completed',
+    //     severity: 'critical',
+    //     findings: 6,
+    //     reportUrl: '/reports/multisig-wallet-audit.pdf',
+    //     contractAddress: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
+    //     auditor: 'Sunya Security Team',
+    //     // imageUrl: '/images/hero-transactions.webp'
+    // },
+    // {
+    //     id: '6',
+    //     title: 'DAO Governance Contract Review',
+    //     description: 'Comprehensive review of a DAO governance system including proposal mechanisms, voting logic, and treasury management.',
+    //     date: '2024-06-18',
+    //     status: 'pending',
+    //     severity: 'medium',
+    //     findings: 0,
+    //     contractAddress: '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512',
+    //     auditor: 'Sunya Security Team',
+    //     // imageUrl: '/images/mockup-1.webp'
+    // },
+    // {
+    //     id: '7',
+    //     title: 'Yield Farming Protocol Audit',
+    //     description: 'Security assessment of a complex yield farming protocol with multiple reward tokens, staking mechanisms, and automated market makers.',
+    //     date: '2024-07-02',
+    //     status: 'completed',
+    //     severity: 'high',
+    //     findings: 9,
+    //     reportUrl: '/reports/yield-farming-audit.pdf',
+    //     contractAddress: '0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9',
+    //     auditor: 'External Auditor',
+    //     // imageUrl: '/images/hero-chart.webp'
+    // },
+    // {
+    //     id: '8',
+    //     title: 'Cross-Chain Bridge Security Review',
+    //     description: 'Critical security analysis of a cross-chain bridge implementation focusing on oracle manipulation, replay attacks, and fund locking mechanisms.',
+    //     date: '2024-07-15',
+    //     status: 'in-progress',
+    //     severity: 'critical',
+    //     findings: 15,
+    //     contractAddress: '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
+    //     auditor: 'Blockchain Security Experts',
+    //     // imageUrl: '/images/hero-transactions.webp'
+    // },
+    // {
+    //     id: '9',
+    //     title: 'GameFi Token Economics Audit',
+    //     description: 'Economic analysis and security review of a gaming token system including inflation mechanisms, reward distribution, and governance features.',
+    //     date: '2024-08-01',
+    //     status: 'completed',
+    //     severity: 'low',
+    //     findings: 2,
+    //     reportUrl: '/reports/gamefi-token-audit.pdf',
+    //     contractAddress: '0x5FC8d32690cc91D4c39d9d3abcBD16989F875707',
+    //     auditor: 'DeFi Analytics Team',
+    //     // imageUrl: '/images/mockup-2.webp'
+    // },
+    // {
+    //     id: '10',
+    //     title: 'Insurance Protocol Smart Contract Audit',
+    //     description: 'Comprehensive security audit of a decentralized insurance protocol covering claim processing, premium calculations, and risk assessment logic.',
+    //     date: '2024-08-10',
+    //     status: 'completed',
+    //     severity: 'medium',
+    //     findings: 4,
+    //     reportUrl: '/reports/insurance-protocol-audit.pdf',
+    //     contractAddress: '0x0165878A594ca255338adfa4d48449f69242Eb8F0',
+    //     auditor: 'Risk Assessment Group',
+    //     // imageUrl: '/images/hero-mockup.webp'
+    // },
+    // {
+    //     id: '11',
+    //     title: 'Decentralized Exchange (DEX) Router Audit',
+    //     description: 'Security analysis of a DEX router contract handling token swaps, liquidity provision, and fee distribution across multiple protocols.',
+    //     date: '2024-08-20',
+    //     status: 'pending',
+    //     severity: 'info',
+    //     findings: 0,
+    //     contractAddress: '0xa513E6E4b8f2a923D98304ec87F64353C4D5C853',
+    //     auditor: 'DEX Security Team',
+    //     // imageUrl: '/images/mockup-1.webp'
+    // },
+    // {
+    //     id: '12',
+    //     title: 'Real Estate Tokenization Platform',
+    //     description: 'Security audit of a property tokenization platform with fractional ownership, rental income distribution, and governance mechanisms.',
+    //     date: '2024-09-05',
+    //     status: 'completed',
+    //     severity: 'high',
+    //     findings: 7,
+    //     reportUrl: '/reports/real-estate-tokenization-audit.pdf',
+    //     contractAddress: '0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6',
+    //     auditor: 'Real Estate Security Auditors',
+    //     // imageUrl: '/images/hero-chart.webp'
+    // }
+];
+

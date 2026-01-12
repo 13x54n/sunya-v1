@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -23,12 +23,9 @@
 html {
   @apply scroll-smooth;
 }
-*{
-  font-family: "Roboto Mono", monospace;
-}
+
 body {
   @apply text-lg;
-  font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -40,13 +37,11 @@ body {
 }
 
 .manrope {
-  font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
   font-style: normal;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
   font-style: normal;
 }

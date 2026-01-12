@@ -5,7 +5,7 @@ import { IBenefit } from "@/types"
 export const benefits: IBenefit[] = [
     {
         title: "Gas Optimization",
-        description: "with practice of writing smart contract code that performs the same functions while consuming fewer computational resources, thereby reducing the gas fees required for execution.",
+        description: "with practice of writing smart contract code that performs the same functions while consuming fewer computational resources.",
         bullets: [
             {
                 title: "Minimizing On-Chain Data Storage",

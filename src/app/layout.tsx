@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { siteDetails } from '@/data/siteDetails';
-import { AuthProvider } from '@/contexts/AuthContext';
+
 
 import "./globals.css";
 
@@ -49,13 +49,11 @@ export default function RootLayout({
         className={`${manrope.className} ${sourceSans.className} antialiased`}
       >
         {siteDetails.googleAnalyticsId && <GoogleAnalytics gaId={siteDetails.googleAnalyticsId} />}
-        <AuthProvider>
-          <Header />
-          <main>
-            {children}
-          </main>
-          <Footer />
-        </AuthProvider>
+        <Header />
+        <main>
+          {children}
+        </main>
+        <Footer />
         <Analytics />
       </body>
     </html>

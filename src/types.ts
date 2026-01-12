@@ -51,3 +51,17 @@ export interface ISocials {
     x?: string;
     [key: string]: string | undefined;
 }
+
+export interface IAudit {
+    id: string;
+    title: string;
+    description: string;
+    date: string;
+    status: 'completed' | 'in-progress' | 'pending';
+    severity: 'critical' | 'high' | 'medium' | 'low' | 'info';
+    findings: number;
+    reportUrl?: string;
+    contractAddress?: string;
+    auditor?: string;
+    imageUrl?: string;
+}
