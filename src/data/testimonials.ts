@@ -12,7 +12,7 @@ export const testimonials: ITestimonial[] = [
         name: 'Sagar Budathoki',
         role: 'Full Stack Developer',
         message: `I'm proud to build ${siteDetails.siteName}'s robust security measures and seamless integrations. We tried to balance user-friendliness with advanced security technology.`,
-        avatar: 'https://ik.imagekit.io/lexy/Ming/1724103658437.webp',
+        avatar: 'https://ik.imagekit.io/lexy/Ming/1672591432967.webp',
     },
     {
         name: 'Suraj Gaire',
