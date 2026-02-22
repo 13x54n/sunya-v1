@@ -5,18 +5,26 @@ export const metadata = {
 
 # Installation
 
-Install Sunya globally to use the CLI across your projects, or run it via npx without installing.
-
-## npm (global)
+Install Sunya with curl. No Node.js or npm required.
 
 ```bash
-npm install -g sunya
+curl -sSL https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/install | sh
 ```
 
-## npx (no install)
-
-Run Sunya without installing it globally:
+Add `~/.local/bin` to your PATH if needed:
 
 ```bash
-npx sunya scan
+export PATH="$HOME/.local/bin:$PATH"
 ```
+
+Then run `sunya scan` in a project with Solidity contracts.
+
+## Commands
+
+- `sunya scan [dir]` — Analyze contracts (default: ./contracts or ./src)
+- `sunya install` — Install or update Slither
+
+## Requirements
+
+- Bash
+- Python 3 (for Slither)

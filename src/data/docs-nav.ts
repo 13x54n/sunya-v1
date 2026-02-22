@@ -40,10 +40,10 @@ export const docsNavData = {
       ],
     },
     {
-      title: "Available Parsers",
+      title: "Slither",
       url: "/docs/parsers",
       items: [
-        { title: "Slither & Mythril", url: "/docs/parsers#slither", slug: "parsers" },
+        { title: "Slither", url: "/docs/parsers", slug: "parsers" },
       ],
     },
     {
@@ -71,7 +71,7 @@ export const docTitles: Record<string, string> = {
   "quick-start": "Quick Start",
   "project-structure": "Project Structure",
   configuration: "Configuration",
-  parsers: "Available Parsers",
+  parsers: "Slither",
   "example-workflow": "Example Workflow",
   contributing: "Contributing",
 }

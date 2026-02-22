@@ -7,15 +7,20 @@ export const metadata = {
 
 Sunya scans your contracts directory recursively. Here's how your project is typically organized:
 
+## Your project
+
 ```
 your-project/
-├── contracts/              ← Auto-scanned recursively
-├── sunya.config.json       ← Your tool config
-├── package.json
-└── node_modules/.bin/sunya ← Runs from here
+├── src/                    ← Foundry: contracts go here
+│   └── *.sol
+├── contracts/             ← Or Hardhat/standard layout
+│   └── *.sol
+└── sunya.config.json       ← Optional: set contractsDir
 ```
 
 ## Key files
 
-- `contracts/` — Sunya finds all Solidity files here automatically
-- `sunya.config.json` — Define tools, parsers, and output format
+- `contracts/` or `src/` — Sunya finds all `.sol` files recursively. Foundry uses `src/`, others often use `contracts/`.
+- `sunya.config.json` — Optional. Set `contractsDir` and `output` format.
+
+Run `sunya install` to set up Slither. Then `sunya scan` analyzes your contracts and reports vulnerabilities.

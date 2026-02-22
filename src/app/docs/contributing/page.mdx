@@ -10,23 +10,19 @@ Contributions are welcome! Here's how to get started.
 ## Development setup
 
 ```bash
-git clone https://github.com/yourusername/sunya.git
-cd sunya
-npm install
-npm link  # Use locally
-sunya scan --config test/fixtures/config.json
+git clone https://github.com/yourusername/sunya-landing-page.git
+cd sunya-landing-page/package
+./bin/install  # Installs sunya to ~/.local/bin
 ```
+
+Or run sunya directly: `./bin/sunya scan` from a project with contracts.
+
+Test with a Foundry project: `forge init my-token`, add `sunya.config.json` with `contractsDir: "./src"`, run `sunya scan`.
 
 ## Contribution steps
 
 1. Fork the repo
 2. Create your feature branch (`git checkout -b feature/foo-bar`)
-3. Add your tool/parser in `src/parsers/`
-4. Test with `npm run test`
+3. Edit `bin/sunya` or `bin/install` as needed
+4. Test against a project with Solidity contracts
 5. Commit and open a PR
-
-## Scripts
-
-- `npm run test` — Run tests
-- `npm run build` — Build (if needed)
-- `npm publish` — Publish to npm

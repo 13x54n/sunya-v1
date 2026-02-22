@@ -1,14 +1,14 @@
 # Sunya Documentation
 
-Documentation site for **Sunya**, an npm package for static analysis of EVM smart contracts.
+Documentation site for **Sunya**, static analysis for EVM smart contracts.
 
 ## About Sunya
 
-Sunya scans your entire `contracts/` directory recursively and runs analysis tools (Slither, Mythril, etc.) with a single command. Config-driven, zero dependencies—it uses your existing system tools.
+Sunya scans your `contracts/` or `src/` directory and runs Slither for vulnerability analysis. Install with curl:
 
 ```bash
-npm install -g sunya
-npx sunya scan
+curl -sSL https://raw.githubusercontent.com/13x54n/sunya-landing-page/main/package/bin/install | sh
+sunya scan
 ```
 
 See the [package README](./package/README.md) for full details.
@@ -52,7 +52,7 @@ npm run start
 ## Project Structure
 
 ```
-├── package/           # Sunya CLI package (npm publishable)
+├── package/           # Sunya CLI (curl-installable)
 ├── src/
 │   ├── app/           # Next.js App Router
 │   │   └── docs/      # Documentation pages (MDX)

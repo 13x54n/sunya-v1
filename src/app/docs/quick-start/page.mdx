@@ -5,52 +5,50 @@ export const metadata = {
 
 # Quick Start
 
-Get up and running with Sunya in two steps: create a config and run a scan.
+Get up and running in three steps: install, create config, run scan.
 
-## 1. Create config
+## 1. Install
 
-Create `sunya.config.json` in your project root:
+```bash
+curl -sSL https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/install | sh
+```
+
+## 2. Create config
+
+Create `sunya.config.json` in your project root. Use `./src` for Foundry, `./contracts` for others:
 
 ```json
 {
-  "contractsDir": "./contracts",
-  "tools": [
-    {
-      "name": "slither",
-      "command": "slither",
-      "args": [],
-      "parser": "slither"
-    },
-    {
-      "name": "mythril",
-      "command": "myth",
-      "args": ["analyze"],
-      "parser": "mythril"
-    }
-  ],
-  "output": {
-    "format": "table"
-  }
+  "contractsDir": "./src",
+  "output": { "format": "table" }
 }
 ```
 
-## 2. Run scan
+## 3. Run scan
 
 ```bash
-npx sunya scan
+sunya scan
 ```
+
+If Slither isn't installed yet, run `sunya install` first.
 
 ## Output
 
+Slither reports vulnerabilities with severity and location:
+
 ```
-Found 12 Solidity files in ./contracts
-Running slither on 12 files...
-Running mythril on 12 files...
+Found 1 Solidity file(s) in ./src
 
-Tool: slither
-  [medium] State variable visibility (contracts/MyToken.sol:42)
-  [low] Naming convention (contracts/Factory.sol:17)
+Running Slither...
+INFO:Detectors:
+Detector: reentrancy-eth
+Reentrancy in VulnerableBank.withdraw() (src/Counter.sol#11-21):
+	External calls:
+	- (success,None) = msg.sender.call{value: amount}() (src/Counter.sol#16)
+	State variables written after the call(s):
+	- balances[msg.sender] = 0 (src/Counter.sol#20)
 
-Tool: mythril
-  No issues found.
+INFO:Slither:./src analyzed (1 contracts with 101 detectors), 3 result(s) found
+
+Scan complete.
 ```

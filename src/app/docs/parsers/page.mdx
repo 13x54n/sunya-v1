@@ -1,22 +1,16 @@
 export const metadata = {
-  title: "Available Parsers | Sunya",
-  description: "Slither and Mythril parsers for Sunya",
+  title: "Slither | Sunya",
+  description: "Slither static analysis for Sunya",
 }
 
-# Available Parsers
+# Slither
 
-Sunya supports output parsers for popular EVM analysis tools. Each parser converts tool output into a structured format.
+Sunya uses [Slither](https://github.com/crytic/slither) for static analysis of EVM smart contracts. Run `sunya install` to install Slither.
 
-| Tool       | Parser   | Output Format   |
-| ---------- | -------- | --------------- |
-| Slither    | `slither`| Console warnings|
-| Mythril    | `mythril`| JSON issues     |
-| [Add yours]| `custom` | [TBD]           |
+| Detector type | Examples |
+| ------------- | -------- |
+| Vulnerabilities | Reentrancy, unchecked external calls, unsafe low-level calls |
+| Best practices | Naming conventions, unused state variables |
+| Solidity | Version constraints, compiler warnings |
 
-## Slither
-
-Use parser `slither` for Slither static analysis. Outputs console-style warnings with severity and location.
-
-## Mythril
-
-Use parser `mythril` for Mythril symbolic execution. Outputs structured JSON issues.
+Slither integrates with Foundry—it compiles via `forge build` and runs 100+ detectors. Output includes file paths, line numbers, and references to detector documentation.

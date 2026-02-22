@@ -5,30 +5,36 @@ export const metadata = {
 
 # Example Workflow
 
-Here's a complete workflow for scanning a fresh Foundry project.
+Here's a complete workflow for scanning a Foundry project.
 
-## 1. Initialize Foundry project
+## 1. Install Sunya
+
+```bash
+curl -sSL https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/install | sh
+```
+
+## 2. Initialize Foundry project
 
 ```bash
 forge init my-token
 cd my-token
 ```
 
-## 2. Install analysis tools
-
-```bash
-npm install -g slither-analyzer
-pip install mythril
-```
-
 ## 3. Create config
 
-```bash
-echo '{"contractsDir": "./src", "tools": [{"name": "slither", "command": "slither", "parser": "slither"}]}' > sunya.config.json
+Create `sunya.config.json` in the project root (Foundry uses `./src`):
+
+```json
+{
+  "contractsDir": "./src",
+  "output": { "format": "table" }
+}
 ```
 
-## 4. Scan everything
+## 4. Run scan
 
 ```bash
-npx sunya scan
+sunya scan
 ```
+
+Sunya uses Slither with Foundry—it runs `forge build` to compile, then analyzes for vulnerabilities (reentrancy, unsafe calls, etc.).

@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# Sunya installer - curl -sSL https://raw.githubusercontent.com/.../install | sh
+set -e
+
+SUNYA_VERSION="${SUNYA_VERSION:-main}"
+REPO="${SUNYA_REPO:-https://raw.githubusercontent.com/13x54n/sunya-landing-page/${SUNYA_VERSION}}"
+BIN_DIR="${SUNYA_BIN_DIR:-$HOME/.local/bin}"
+INSTALL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PACKAGE_DIR="$(dirname "$INSTALL_DIR")"
+
+echo "Sunya - Static analysis for EVM smart contracts"
+echo ""
+
+# 1. Install Sunya CLI
+mkdir -p "$BIN_DIR"
+SUNYA_BIN="$BIN_DIR/sunya"
+
+if [[ -f "$PACKAGE_DIR/bin/sunya" ]]; then
+  echo "Installing sunya from local package..."
+  cp "$PACKAGE_DIR/bin/sunya" "$SUNYA_BIN"
+  chmod +x "$SUNYA_BIN"
+else
+  echo "Downloading sunya..."
+  curl -sSL "${REPO}/package/bin/sunya" -o "$SUNYA_BIN"
+  chmod +x "$SUNYA_BIN"
+fi
+
+# Add to PATH if needed
+if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
+  echo ""
+  echo "Add to your shell profile (.bashrc, .zshrc):"
+  echo "  export PATH=\"\$HOME/.local/bin:\$PATH\""
+  echo ""
+fi
+
+echo "Installed: $SUNYA_BIN"
+echo ""
+
+# 2. Install analysis tools (uv, slither)
+echo "Setting up analysis tools..."
+
+# uv - fast Python package manager
+if ! command -v uv &>/dev/null; then
+  echo "Installing uv..."
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Python / pip
+if ! command -v python3 &>/dev/null && ! command -v python &>/dev/null; then
+  echo "Python is required. Install from https://python.org or via your package manager."
+  echo "  macOS: brew install python3"
+  echo "  Ubuntu: sudo apt install python3 python3-pip"
+  exit 1
+fi
+
+# Slither
+echo "Installing Slither..."
+if command -v uv &>/dev/null; then
+  uv pip install --system slither-analyzer 2>/dev/null || \
+    uv pip install slither-analyzer 2>/dev/null || true
+fi
+pip3 install slither-analyzer 2>/dev/null || \
+  pip install slither-analyzer 2>/dev/null || true
+
+echo ""
+echo "Done! Run: sunya scan"
+echo ""
+echo "Usage:"
+echo "  cd your-contracts-project"
+echo "  sunya scan              # Scan ./contracts or ./src"
+echo "  sunya install           # Re-run tool setup"
+echo ""

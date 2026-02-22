@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# Sunya - Static analysis for EVM smart contracts
+# Install: curl -sSL https://raw.githubusercontent.com/13x54n/sunya-landing-page/main/package/bin/install | sh
+
+set -e
+
+# Ensure common pip/uv install locations are on PATH
+export PATH="$HOME/.local/bin:${PATH}"
+
+CONTRACTS_DIR="${SUNYA_CONTRACTS_DIR:-./contracts}"
+CONFIG_FILE="${SUNYA_CONFIG:-sunya.config.json}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Resolve contracts dir from config if present
+resolve_config() {
+  local cfg
+  for cfg in "$(pwd)/${CONFIG_FILE}"; do
+    if [[ -f "$cfg" ]]; then
+      CONTRACTS_DIR="$(grep -o '"contractsDir"[[:space:]]*:[[:space:]]*"[^"]*"' "$cfg" 2>/dev/null | sed 's/.*: *"\(.*\)".*/\1/' | sed 's|^\./||')"
+      [[ -n "$CONTRACTS_DIR" && "$CONTRACTS_DIR" != "./" ]] && return
+    fi
+  done
+}
+
+print_usage() {
+  echo "Sunya - Static analysis for EVM smart contracts"
+  echo ""
+  echo "Usage: sunya scan [dir]"
+  echo "       sunya install"
+  echo ""
+  echo "  scan [dir]   Analyze .sol files in dir (default: ${CONTRACTS_DIR})"
+  echo "  install      Ensure Slither is installed"
+  echo ""
+  echo "Environment:"
+  echo "  SUNYA_CONTRACTS_DIR  Directory to scan (default: ./contracts)"
+  echo "  SUNYA_CONFIG         Config file (default: sunya.config.json)"
+}
+
+run_install() {
+  echo "Installing Slither..."
+  if command -v uv &>/dev/null; then
+    uv pip install --system slither-analyzer 2>/dev/null || \
+      uv pip install slither-analyzer 2>/dev/null || true
+  fi
+  pip3 install slither-analyzer 2>/dev/null || \
+    pip install slither-analyzer 2>/dev/null || true
+  echo "Done. Run 'sunya scan' to analyze contracts."
+}
+
+run_scan() {
+  resolve_config
+  local dir="${1:-$CONTRACTS_DIR}"
+  [[ -d "$dir" ]] || dir="./contracts"
+  [[ -d "$dir" ]] || dir="./src"
+  [[ -d "$dir" ]] || { echo "No contracts directory found (tried ./contracts, ./src)"; exit 1; }
+
+  local files
+  files=$(find "$dir" -name "*.sol" -type f 2>/dev/null | head -200)
+  local count
+  count=$(echo "$files" | grep -c . 2>/dev/null || echo 0)
+
+  if [[ -z "$files" || "$count" -eq 0 ]]; then
+    echo "No .sol files found in $dir"
+    exit 0
+  fi
+
+  echo "Found $count Solidity file(s) in $dir"
+  echo ""
+
+  # Slither (directory mode) - outputs findings to stderr, do NOT suppress
+  if command -v slither &>/dev/null; then
+    echo "Running Slither..."
+    slither "$dir" || true
+  else
+    echo "Slither not found. Run: sunya install"
+  fi
+
+  echo ""
+  echo "Scan complete."
+}
+
+case "${1:-scan}" in
+  scan)
+    run_scan "${2:-}"
+    ;;
+  install)
+    run_install
+    ;;
+  -h|--help)
+    print_usage
+    ;;
+  *)
+    echo "Unknown command: $1"
+    print_usage
+    exit 1
+    ;;
+esac

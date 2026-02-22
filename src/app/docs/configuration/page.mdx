@@ -11,38 +11,30 @@ Sunya is configured via `sunya.config.json` in your project root.
 
 ```json
 {
-  "contractsDir": "./contracts",
-  "tools": [
-    {
-      "name": "slither",
-      "command": "slither",
-      "args": [],
-      "parser": "slither"
-    }
-  ],
+  "contractsDir": "./src",
   "output": {
-    "format": "table|json",
+    "format": "table",
     "file": "sunya-report.json"
   }
 }
 ```
 
+Use `./src` for Foundry projects, `./contracts` for Hardhat or standard layouts.
+
 ## contractsDir
 
-Directory to scan recursively for Solidity files. Default is `./contracts`.
-
-## tools
-
-Array of analysis tools. Each tool has:
-
-- `name` — Display name in output
-- `command` — Executable (e.g. slither, myth)
-- `args` — Base arguments (files are auto-appended)
-- `parser` — Output parser: `slither` or `mythril`
+Directory to scan recursively for Solidity files. Use `./src` for Foundry projects, `./contracts` for Hardhat or standard layouts. Default is `./contracts`.
 
 ## output
 
-- `format` — `table` for console output, `json` for machine-readable reports
-- `file` — Optional path for JSON output file
+- `format` — `table` for console output
+- `file` — Optional path for JSON output (future)
 
-**Supported parsers:** slither, mythril
+## Environment
+
+| Variable | Description |
+| -------- | ----------- |
+| `SUNYA_CONFIG` | Config file path (default: sunya.config.json) |
+| `SUNYA_CONTRACTS_DIR` | Directory to scan (overrides config) |
+
+Run `sunya install` to install or update Slither.
