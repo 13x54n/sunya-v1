@@ -30,6 +30,7 @@ Scans `./contracts` or `./src` for `.sol` files and runs Slither.
 |---------|-------------|
 | `sunya scan [dir]` | Analyze contracts in dir (default: ./contracts or ./src) |
 | `sunya install` | Install or update Slither |
+| `sunya uninstall [-y]` | Remove sunya from your system |
 | `sunya --help` | Show usage |
 
 ### Options

@@ -27,13 +27,34 @@ print_usage() {
   echo ""
   echo "Usage: sunya scan [dir]"
   echo "       sunya install"
+  echo "       sunya uninstall [-y]"
   echo ""
-  echo "  scan [dir]   Analyze .sol files in dir (default: ${CONTRACTS_DIR})"
-  echo "  install      Ensure Slither is installed"
+  echo "  scan [dir]     Analyze .sol files in dir (default: ${CONTRACTS_DIR})"
+  echo "  install        Ensure Slither is installed"
+  echo "  uninstall      Remove sunya from your system"
+  echo "  uninstall -y   Remove without prompting"
   echo ""
   echo "Environment:"
   echo "  SUNYA_CONTRACTS_DIR  Directory to scan (default: ./contracts)"
   echo "  SUNYA_CONFIG         Config file (default: sunya.config.json)"
+}
+
+run_uninstall() {
+  local yes="${1:-}"
+  local path
+  path="$(command -v sunya 2>/dev/null)" || path=""
+  [[ -z "$path" ]] && { echo "sunya not found in PATH"; exit 1; }
+  [[ ! -f "$path" ]] && { echo "sunya binary not found at $path"; exit 1; }
+
+  if [[ "$yes" != "-y" && "$yes" != "--yes" ]]; then
+    echo "This will remove: $path"
+    printf "Continue? [y/N] "
+    read -r reply
+    [[ "$reply" =~ ^[yY] ]] || { echo "Cancelled."; exit 0; }
+  fi
+
+  rm -f "$path"
+  echo "Removed sunya from $path"
 }
 
 run_install() {
@@ -85,6 +106,9 @@ case "${1:-scan}" in
     ;;
   install)
     run_install
+    ;;
+  uninstall)
+    run_uninstall "${2:-}"
     ;;
   -h|--help)
     print_usage
