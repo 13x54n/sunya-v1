@@ -5,17 +5,21 @@ export const metadata = {
 
 # Contributing
 
-Contributions are welcome! Here's how to get started.
+Contributions are welcome! Sunya supports Linux, macOS, and Windows.
 
 ## Development setup
 
 ```bash
 git clone https://github.com/yourusername/sunya-landing-page.git
 cd sunya-landing-page/package
-./bin/install  # Installs sunya to ~/.local/bin
+./bin/install  # Installs sunya to ~/.local/bin (or %LOCALAPPDATA%\sunya\bin on Windows)
 ```
 
-Or run sunya directly: `./bin/sunya scan` from a project with contracts.
+**Without installing:** Run the Node.js version directly from a project with contracts:
+
+```bash
+node package/bin/sunya.js scan
+```
 
 Test with a Foundry project: `forge init my-token`, add `sunya.config.json` with `contractsDir: "./src"`, run `sunya scan`.
 
@@ -23,6 +27,6 @@ Test with a Foundry project: `forge init my-token`, add `sunya.config.json` with
 
 1. Fork the repo
 2. Create your feature branch (`git checkout -b feature/foo-bar`)
-3. Edit `bin/sunya` or `bin/install` as needed
-4. Test against a project with Solidity contracts
+3. Edit `bin/sunya.js` (Node, all platforms), `bin/sunya` (bash fallback), or `bin/install` / `bin/install.ps1`
+4. Test on Linux, macOS, or Windows
 5. Commit and open a PR

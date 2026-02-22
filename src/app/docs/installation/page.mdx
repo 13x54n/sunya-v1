@@ -5,27 +5,41 @@ export const metadata = {
 
 # Installation
 
-Install Sunya with curl. No Node.js or npm required.
+Sunya works on **Linux**, **macOS**, and **Windows**.
+
+## Linux & macOS
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/install | sh
+curl -sSL https://raw.githubusercontent.com/13x54n/sunya-landing-page/main/package/bin/install | sh
 ```
 
-Add `~/.local/bin` to your PATH if needed:
+Add `~/.local/bin` to PATH if needed:
 
 ```bash
-export PATH="$HOME/.local/bin:$PATH"
+# macOS (zsh)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+
+# Linux (bash)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 ```
 
-Then run `sunya scan` in a project with Solidity contracts.
+## Windows (PowerShell)
+
+```powershell
+irm https://raw.githubusercontent.com/13x54n/sunya-landing-page/main/package/bin/install.ps1 | iex
+```
+
+Restart your terminal after installation so the PATH update takes effect.
 
 ## Commands
 
 - `sunya scan [dir]` — Analyze contracts (default: ./contracts or ./src)
 - `sunya install` — Install or update Slither
-- `sunya uninstall [-y]` — Remove sunya from your system (use `-y` to skip confirmation)
+- `sunya uninstall [-y]` — Remove sunya (use `-y` to skip confirmation)
 
 ## Uninstall
+
+Works on all platforms:
 
 ```bash
 sunya uninstall      # Prompts for confirmation
@@ -34,5 +48,6 @@ sunya uninstall -y   # Remove without prompting
 
 ## Requirements
 
-- Bash
-- Python 3 (for Slither)
+- **Linux, macOS:** Bash, Node.js (recommended) or Python
+- **Windows:** Node.js
+- **All platforms:** Python 3 (for Slither)

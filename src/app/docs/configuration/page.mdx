@@ -5,7 +5,7 @@ export const metadata = {
 
 # Configuration
 
-Sunya is configured via `sunya.config.json` in your project root.
+Sunya is configured via `sunya.config.json` in your project root. Works the same on Linux, macOS, and Windows.
 
 ## sunya.config.json
 
@@ -32,9 +32,7 @@ Directory to scan recursively for Solidity files. Use `./src` for Foundry projec
 
 ## Environment
 
-| Variable | Description |
-| -------- | ----------- |
-| `SUNYA_CONFIG` | Config file path (default: sunya.config.json) |
-| `SUNYA_CONTRACTS_DIR` | Directory to scan (overrides config) |
+- **`SUNYA_CONFIG`** — Config file path (default: sunya.config.json)
+- **`SUNYA_CONTRACTS_DIR`** — Directory to scan (overrides config)
 
 Run `sunya install` to install or update Slither.

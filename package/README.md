@@ -2,17 +2,33 @@
 
 Static analysis for EVM smart contracts. Install with curl, analyze with one command.
 
-## Install (curl)
+## Install
+
+### Linux & macOS
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/13x54n/sunya-landing-page/main/package/bin/install | sh
 ```
 
-Add `~/.local/bin` to your PATH if needed:
+Add `~/.local/bin` to PATH if needed:
 
 ```bash
-export PATH="$HOME/.local/bin:$PATH"
+# macOS (zsh)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+
+# Linux (bash)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 ```
+
+**Requirements:** Bash, Node.js (recommended) or Python. Slither is installed automatically.
+
+### Windows (PowerShell)
+
+```powershell
+irm https://raw.githubusercontent.com/13x54n/sunya-landing-page/main/package/bin/install.ps1 | iex
+```
+
+**Requirements:** Node.js, Python (for Slither).
 
 ## Usage
 
@@ -51,9 +67,11 @@ Create `sunya.config.json` in your project root. Use `./src` for Foundry project
 
 ## Requirements
 
-- Bash
-- Python 3 (for Slither)
-- [uv](https://github.com/astral-sh/uv) (optional, installed automatically by the installer)
+| Platform | Requirements |
+| -------- | ------------ |
+| Linux    | Bash, Node.js (recommended) or Python, Python 3 (for Slither) |
+| macOS    | Bash, Node.js (recommended) or Python, Python 3 (for Slither) |
+| Windows  | Node.js, Python (for Slither) |
 
 ## Example
 

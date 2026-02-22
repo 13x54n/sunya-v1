@@ -5,12 +5,10 @@ export const metadata = {
 
 # Slither
 
-Sunya uses [Slither](https://github.com/crytic/slither) for static analysis of EVM smart contracts. Run `sunya install` to install Slither.
+Sunya uses [Slither](https://github.com/crytic/slither) for static analysis of EVM smart contracts. Slither works on Linux, macOS, and Windows. Run `sunya install` to install it.
 
-| Detector type | Examples |
-| ------------- | -------- |
-| Vulnerabilities | Reentrancy, unchecked external calls, unsafe low-level calls |
-| Best practices | Naming conventions, unused state variables |
-| Solidity | Version constraints, compiler warnings |
+- **Vulnerabilities** — Reentrancy, unchecked external calls, unsafe low-level calls
+- **Best practices** — Naming conventions, unused state variables
+- **Solidity** — Version constraints, compiler warnings
 
 Slither integrates with Foundry—it compiles via `forge build` and runs 100+ detectors. Output includes file paths, line numbers, and references to detector documentation.

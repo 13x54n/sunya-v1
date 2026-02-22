@@ -4,10 +4,15 @@ Documentation site for **Sunya**, static analysis for EVM smart contracts.
 
 ## About Sunya
 
-Sunya scans your `contracts/` or `src/` directory and runs Slither for vulnerability analysis. Install with curl:
+Sunya scans your `contracts/` or `src/` directory and runs Slither for vulnerability analysis. Cross-platform: Linux, macOS, Windows.
 
 ```bash
+# Linux & macOS
 curl -sSL https://raw.githubusercontent.com/13x54n/sunya-landing-page/main/package/bin/install | sh
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/13x54n/sunya-landing-page/main/package/bin/install.ps1 | iex
+
 sunya scan
 ```
 

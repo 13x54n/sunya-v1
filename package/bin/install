@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-# Sunya installer - curl -sSL https://raw.githubusercontent.com/.../install | sh
+# Sunya installer - Linux & macOS
+# Run: curl -sSL https://raw.githubusercontent.com/13x54n/sunya-landing-page/main/package/bin/install | sh
 set -e
 
 SUNYA_VERSION="${SUNYA_VERSION:-main}"
-REPO="${SUNYA_REPO:-https://raw.githubusercontent.com/13x54n/sunya-landing-page/${SUNYA_VERSION}}"
+REPO="${SUNYA_REPO:-https://raw.githubusercontent.com/13x54n/sunya-landing-page}"
 BIN_DIR="${SUNYA_BIN_DIR:-$HOME/.local/bin}"
+SHARE_DIR="${SUNYA_SHARE_DIR:-$HOME/.local/share/sunya}"
 INSTALL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACKAGE_DIR="$(dirname "$INSTALL_DIR")"
 
@@ -13,23 +15,39 @@ echo ""
 
 # 1. Install Sunya CLI
 mkdir -p "$BIN_DIR"
+mkdir -p "$SHARE_DIR"
 SUNYA_BIN="$BIN_DIR/sunya"
 
-if [[ -f "$PACKAGE_DIR/bin/sunya" ]]; then
-  echo "Installing sunya from local package..."
-  cp "$PACKAGE_DIR/bin/sunya" "$SUNYA_BIN"
+# Prefer Node.js version (cross-platform) if Node is available
+if command -v node &>/dev/null; then
+  SUNYA_JS="$SHARE_DIR/sunya.js"
+  if [[ -f "$PACKAGE_DIR/bin/sunya.js" ]]; then
+    cp "$PACKAGE_DIR/bin/sunya.js" "$SUNYA_JS"
+  else
+    echo "Downloading sunya..."
+    curl -sSL "${REPO}/${SUNYA_VERSION}/package/bin/sunya.js" -o "$SUNYA_JS"
+  fi
+  # Create wrapper
+  echo "#!/usr/bin/env bash" > "$SUNYA_BIN"
+  echo "exec node \"$SUNYA_JS\" \"\$@\"" >> "$SUNYA_BIN"
   chmod +x "$SUNYA_BIN"
 else
-  echo "Downloading sunya..."
-  curl -sSL "${REPO}/package/bin/sunya" -o "$SUNYA_BIN"
+  # Fallback to bash version (Linux/macOS only)
+  if [[ -f "$PACKAGE_DIR/bin/sunya" ]]; then
+    cp "$PACKAGE_DIR/bin/sunya" "$SUNYA_BIN"
+  else
+    echo "Downloading sunya..."
+    curl -sSL "${REPO}/${SUNYA_VERSION}/package/bin/sunya" -o "$SUNYA_BIN"
+  fi
   chmod +x "$SUNYA_BIN"
 fi
 
 # Add to PATH if needed
 if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
   echo ""
-  echo "Add to your shell profile (.bashrc, .zshrc):"
-  echo "  export PATH=\"\$HOME/.local/bin:\$PATH\""
+  echo "Add to your shell profile:"
+  echo "  macOS (zsh):  echo 'export PATH=\"\$HOME/.local/bin:\$PATH\"' >> ~/.zshrc"
+  echo "  Linux (bash): echo 'export PATH=\"\$HOME/.local/bin:\$PATH\"' >> ~/.bashrc"
   echo ""
 fi
 

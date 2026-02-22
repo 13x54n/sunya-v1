@@ -9,8 +9,16 @@ Get up and running in three steps: install, create config, run scan.
 
 ## 1. Install
 
+**Linux & macOS:**
+
 ```bash
-curl -sSL https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/install | sh
+curl -sSL https://raw.githubusercontent.com/13x54n/sunya-landing-page/main/package/bin/install | sh
+```
+
+**Windows (PowerShell):**
+
+```powershell
+irm https://raw.githubusercontent.com/13x54n/sunya-landing-page/main/package/bin/install.ps1 | iex
 ```
 
 ## 2. Create config
@@ -36,7 +44,7 @@ If Slither isn't installed yet, run `sunya install` first.
 
 Slither reports vulnerabilities with severity and location:
 
-```
+```mdx
 Found 1 Solidity file(s) in ./src
 
 Running Slither...
