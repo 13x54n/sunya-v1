@@ -57,7 +57,7 @@ $slitherInstalled = $false
 foreach ($cmd in @("python", "python3")) {
   if (Get-Command $cmd -ErrorAction SilentlyContinue) {
     try {
-      & $cmd -m pip install slither-analyzer 2>$null
+      & $cmd -m pip install --quiet slither-analyzer 2>$null
       if ($LASTEXITCODE -eq 0) { $slitherInstalled = $true; break }
     } catch {}
   }
@@ -66,7 +66,7 @@ if (-not $slitherInstalled) {
   foreach ($cmd in @("pip3", "pip")) {
     if (Get-Command $cmd -ErrorAction SilentlyContinue) {
       try {
-        & $cmd install slither-analyzer 2>$null
+        & $cmd install --quiet slither-analyzer 2>$null
         if ($LASTEXITCODE -eq 0) { $slitherInstalled = $true; break }
       } catch {}
     }
@@ -74,6 +74,27 @@ if (-not $slitherInstalled) {
 }
 if (-not $slitherInstalled) {
   Write-Host "Could not install Slither automatically. Run: python -m pip install slither-analyzer"
+}
+
+# Add Python Scripts to PATH so sunya can find slither
+$userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+$scriptsAdded = $false
+foreach ($cmd in @("python", "python3")) {
+  if (Get-Command $cmd -ErrorAction SilentlyContinue) {
+    try {
+      $scriptsDir = & $cmd -c "import sysconfig; print(sysconfig.get_path('scripts'))" 2>$null
+      if ($scriptsDir -and (Test-Path $scriptsDir) -and ($userPath -notlike "*$scriptsDir*")) {
+        [Environment]::SetEnvironmentVariable("Path", "$userPath;$scriptsDir", "User")
+        $env:Path = "$env:Path;$scriptsDir"
+        Write-Host "Added Python Scripts to PATH: $scriptsDir"
+        $scriptsAdded = $true
+        break
+      }
+    } catch {}
+  }
+}
+if ($scriptsAdded) {
+  Write-Host "Restart your terminal for PATH changes to take effect."
 }
 
 Write-Host ""
