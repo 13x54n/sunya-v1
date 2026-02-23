@@ -2,7 +2,7 @@ import { siteDetails } from "@/data/siteDetails"
 
 export const metadata = {
   title: "Installation",
-  description: "Install Sunya for EVM smart contract security scanning. One-command curl install for Linux and macOS. PowerShell or CMD install for Windows. No npm required.",
+  description: "Install Sunya for EVM smart contract security scanning. One-command curl install for Linux and macOS. PowerShell install for Windows. No npm required.",
   openGraph: {
     title: "Installation | Sunya",
     description: "Install Sunya for static analysis of EVM smart contracts. Works on Linux, macOS, and Windows.",
@@ -31,19 +31,13 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 ```
 
-## Windows
+## Windows (PowerShell)
 
-**PowerShell:**
 ```powershell
 irm https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/install.ps1 | iex
 ```
 
-**CMD:**
-```cmd
-curl -sL -o %TEMP%\sunya-install.cmd https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/install.cmd && %TEMP%\sunya-install.cmd
-```
-
-Restart your terminal after installation so PATH updates take effect.
+Restart your terminal after installation so the PATH update takes effect.
 
 ## Commands
 

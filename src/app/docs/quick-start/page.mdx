@@ -2,7 +2,7 @@ import { siteDetails } from "@/data/siteDetails"
 
 export const metadata = {
   title: "Quick Start",
-  description: "Get started with Sunya in 3 steps: install (curl, PowerShell, or CMD), create sunya.config.json, run sunya scan. Scan Foundry and Hardhat projects for vulnerabilities.",
+  description: "Get started with Sunya in 3 steps: install via curl or PowerShell, create sunya.config.json, run sunya scan. Scan Foundry and Hardhat projects for vulnerabilities.",
   openGraph: {
     title: "Quick Start | Sunya",
     description: "Get started with Sunya in minutes. Install, configure, and scan your Solidity contracts.",
@@ -27,12 +27,6 @@ curl -sSL https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/ins
 
 ```powershell
 irm https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/install.ps1 | iex
-```
-
-**Windows (CMD):**
-
-```cmd
-curl -sL -o %TEMP%\sunya-install.cmd https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/install.cmd && %TEMP%\sunya-install.cmd
 ```
 
 ## 2. Create config

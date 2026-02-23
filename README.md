@@ -13,9 +13,6 @@ curl -sSL https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/ins
 # Windows (PowerShell)
 irm https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/install.ps1 | iex
 
-# Windows (CMD)
-curl -sL -o %TEMP%\sunya-install.cmd https://raw.githubusercontent.com/13x54n/sunya-v1/main/package/bin/install.cmd && %TEMP%\sunya-install.cmd
-
 sunya scan
 ```
 

@@ -4,7 +4,7 @@ export const siteDetails = {
   metadata: {
     title: "Sunya - Static Analysis for EVM Smart Contracts",
     description:
-      "Sunya scans your Solidity contracts for vulnerabilities using Slither. One-command install (curl, PowerShell, or CMD). Works on Linux, macOS, and Windows. Perfect for Foundry and Hardhat projects.",
+      "Sunya scans your Solidity contracts for vulnerabilities using Slither. Install with one curl command. Works on Linux, macOS, and Windows. Perfect for Foundry and Hardhat projects.",
     keywords: [
       "smart contract security",
       "solidity audit",
